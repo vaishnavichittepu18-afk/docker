@@ -3,11 +3,11 @@ version: '3.8'
 services:
 
   spring1:
-    build: ./springboot-server
+    build: ./app
     container_name: spring1
 
   spring2:
-    build: ./springboot-server
+    build: ./app
     container_name: spring2
 
   nginx:
