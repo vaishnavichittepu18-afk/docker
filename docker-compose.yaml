@@ -1,0 +1,62 @@
+version: '3.1'
+
+services:
+
+  backend1:
+    build: ./node-server
+    restart: always
+    environment:
+      PORT: 7070
+    ports:
+      - "7071:7070"
+
+  backend2:
+    build: ./python-server
+    restart: always
+    environment:
+      PORT: 7070
+    ports:
+      - "7072:7070"
+
+  backend3:
+    build: ./springboot-server
+    restart: always
+    environment:
+      PORT: 7070
+    ports:
+      - "7073:7070"
+
+  backend4:
+    build: ./csharp-server
+    restart: always
+    environment:
+      PORT: 7070
+    ports:
+      - "7074:7070"
+
+  # backend5:
+  #   build: ./cpp-server
+  #   restart: always
+  #   environment:
+  #     PORT: 7070
+  #   ports:
+  #     - "7075:7070"
+  backend6:
+    build: ./go-server
+    restart: always
+    environment:
+      PORT: 7070
+    ports:
+      - "7076:7070"
+
+  loadbalancer:
+    build: ./java-loadbalancer
+    restart: always
+    ports:
+      - "7070:7070"
+    depends_on:
+      - backend1
+      - backend2
+      - backend3
+      - backend4
+      - backend6
